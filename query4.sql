@@ -7,5 +7,5 @@ select
         when vdn_label = 'ABSORPTION' then 'ABSORPTION'
         else 'RESTO'
     end as vdn_aggregation
-from 
-    your_table_name;
+from
+    keepcoding.ivr_calls calls
