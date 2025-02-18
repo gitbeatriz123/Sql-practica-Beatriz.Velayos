@@ -1,10 +1,4 @@
-select 
-    ivr_calls.ivr_id,
-    case 
-        when ivr_steps.step_name = 'CUSTOMERINFOBYPHONE.TX' and ivr_steps.step_result = 'OK' then 1
-        else 0
-    end as info_by_phone_lg
-from 
-    ivr_calls
-left join  
-    ivr_steps on ivr_calls.ivr_id = ivr_steps.ivr_id;
+SELECT ivr_id
+     , MAX(IF(step_name = 'CUSTOMERINFOBYPHONE.TX' AND step_result = 'OK', 1, 0)) AS info_by_phone_lg
+  FROM keepcoding.ivr_detail
+ GROUP BY ivr_id
